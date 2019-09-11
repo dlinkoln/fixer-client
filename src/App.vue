@@ -6,6 +6,7 @@
       <router-link to="/SignIn">Перейти к SignIn |</router-link>
       <router-link to="/SignUp">Перейти к SignUp |</router-link>
       <router-link to="/complete">Перейти к completePass |</router-link>
+      <router-link to="/profile">Перейти к Profile |</router-link>
     </nav>
 
     <router-view :user="user"></router-view>

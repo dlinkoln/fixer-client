@@ -147,6 +147,7 @@
 <script>
 import { email, required, minLength } from "vuelidate/lib/validators";
 import axios from "axios";
+
 export default {
   name: "signIn",
   data() {
@@ -172,26 +173,20 @@ export default {
     },
     submitSignIn() {
       if (!this.$v.$invalid) {
+        this.$router.push("/profile");
         axios
           .post("http://localhost:3000/accounts/sign-in", this.user)
           .then(res => {
+            console.log(res);
             if (res.data.token) {
-              let token = res.data.token;
-              console.log(console);
+              const token = res.data.token;
+
               localStorage.setItem("token", token);
-              this.$router.push("/chat");
+              this.$router.push("/profile");
             }
           });
       }
     }
-    // saveToken(res) {
-    //   if (res.data.token) {
-    //     const { token } = res.data;
-    //     localStorage.setItem("token", token);
-    //     console.log(this.axios);
-    //     axios.defaults.headers.common.Authorization = `JWT ${token}`;
-    //   }
-    // }
   }
 };
 </script>
